@@ -1,0 +1,17 @@
+{
+    "name": "mashup-mill/phing-tasks",
+    "license": "Apache License 2.0",
+    "authors": [
+        {
+            "name": "Branden Cash",
+            "email": "ammmze@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phing/phing": "2.*",
+        "packagist/yuicompressor-bin": "2.*"
+    },
+    "autoload-dev": {
+        "classmap": ["src/main/php/"]
+    }
+}

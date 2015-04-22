@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="phing-tasks-tests" default="test">
+    <import file="../../main/resources/tasks.xml"/>
+    <property name="project.target" value="./build" />
+    <target name="clean">
+        <delete dir="${project.target}" />
+    </target>
+
+    <target name="test-yui">
+        <copy todir="${project.target}">
+            <fileset dir="./">
+                <include name="**/*.css" />
+                <exclude name="**/*.min.css" />
+                <exclude name="${project.target}/" />
+            </fileset>
+        </copy>
+        <yuic jar="../../../vendor/bin/yuicompressor.jar" cacheFile="${project.target}/yuic.cache">
+            <fileset dir="${project.target}">
+                <include name="**/*.css" />
+                <exclude name="**/*.min.css" />
+            </fileset>
+        </yuic>
+        <yuic jar="../../../vendor/bin/yuicompressor.jar" cacheFile="${project.target}/yuic.cache" targetDir="${project.target}/min">
+            <fileset dir="${project.target}">
+                <include name="**/*.css" />
+                <exclude name="**/*.min.css" />
+            </fileset>
+        </yuic>
+    </target>
+</project>

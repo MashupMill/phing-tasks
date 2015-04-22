@@ -1,0 +1,5 @@
+/vendor/
+composer.lock
+.idea
+yuic.cache
+src/test/resources/build
