@@ -90,7 +90,7 @@ class YuiCompressorTask extends Task
                 foreach ($files as $file) {
                     //$file = new PhingFile($fl->getDir($this->project), $file);
                     //$file = $fl->dir . DIRECTORY_SEPARATOR . $file;
-                    $in = FileUtils::getChainedReader(new FileReader($file), $this->filterChains, $this->project);
+                    $in = FileUtils::getChainedReader(new FileReader(new PhingFile($context, $file)), $this->filterChains, $this->project);
                     while (-1 !== ($buffer = $in->read())) {
                         $this->minify($context, $file, $buffer);
                         $this->saveCache();
@@ -108,7 +108,7 @@ class YuiCompressorTask extends Task
                 $context = $fs->getDir($this->project);
                 foreach ($files as $file) {
                     //$file = new PhingFile($context, $file);
-                    $in = FileUtils::getChainedReader(new FileReader($file), $this->filterChains, $this->project);
+                    $in = FileUtils::getChainedReader(new FileReader(new PhingFile($context, $file)), $this->filterChains, $this->project);
                     while (-1 !== ($buffer = $in->read())) {
                         $this->minify($context, $file, $buffer);
                         $this->saveCache();
